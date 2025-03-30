@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Gift, Users, Clock } from 'lucide-react';
@@ -29,7 +28,7 @@ export function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              to={user ? "/donate" : "/pre-donate"}
+              to={user ? "/signup" : "/pre-donate"}
               className="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary/90 inline-flex items-center justify-center"
             >
               <Gift className="h-5 w-5 mr-2" />

@@ -7,7 +7,7 @@ type UserProfile = Database['public']['Tables']['profiles']['Row'];
 type Donation = Database['public']['Tables']['donations']['Row'];
 
 export const authService = {
-  // Authentication
+
   async signIn(email: string, password: string): Promise<{ session: Session; user: UserProfile }> {
     const { data, error } = await getSupabase().auth.signInWithPassword({ email, password });
     if (error) throw error;

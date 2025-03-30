@@ -28,7 +28,7 @@ export function Contact() {
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
           <Phone className="h-8 w-8 text-primary mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-secondary mb-2">Phone</h3>
-          <p className="text-secondary/80">+91 12345 67890</p>
+          <p className="text-secondary/80">+91  83293 55641</p>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-md text-center">
           <Mail className="h-8 w-8 text-primary mx-auto mb-4" />
