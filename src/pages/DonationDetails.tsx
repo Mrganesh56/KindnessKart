@@ -50,10 +50,18 @@ export function DonationDetails() {
       setLoading(true);
       const supabase = getSupabase();
       const { data, error } = await supabase
-        .from('donations')
-        .select('*, donor:profiles(name, email, phone)')
-        .eq('id', id)
-        .single();
+      .from('donations')
+      .select(`
+        *,
+        donor:donor_id (
+          name,
+          email,
+          phone
+        )
+      `)
+      .eq('id', id)
+      .single();
+    
 
       if (error || !data) {
         throw new Error('Donation not found');

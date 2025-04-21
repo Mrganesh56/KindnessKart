@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Heart, Users, Target, Award } from 'lucide-react';
 
 export function About() {

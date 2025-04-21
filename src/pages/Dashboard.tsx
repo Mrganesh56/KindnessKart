@@ -71,36 +71,44 @@ export function Dashboard() {
       toast.error('You must be logged in to accept donations');
       return;
     }
-
+  
     try {
       setLoading(true);
-      
-      // Verify donation exists first
+  
+      // Get donation with donor details
       const { data: donation, error: fetchError } = await getSupabase()
         .from('donations')
-        .select('*')
+        .select(`
+          *,
+          donor:donor_id (
+            id,
+            name,
+            email,
+            phone
+          )
+        `)
         .eq('id', donationId)
         .single();
-
+  
       if (fetchError || !donation) {
         throw new Error('Donation not found in database');
       }
-
-      // Update donation status
+  
+      // Update status to matched
       const { error } = await getSupabase()
         .from('donations')
-        .update({ 
+        .update({
           status: 'matched',
           orphanage_id: user.id,
           updated_at: new Date().toISOString()
         })
         .eq('id', donationId);
-
+  
       if (error) throw error;
-      
+  
       toast.success('Donation accepted successfully!');
-      navigate(`/donations/${donationId}`);
-      
+      navigate(`/donations/${donationId}`); // Detailed view
+  
     } catch (error) {
       console.error('Error accepting donation:', error);
       toast.error(error.message || 'Failed to accept donation');
@@ -108,7 +116,7 @@ export function Dashboard() {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     let subscription: any;
     

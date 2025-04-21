@@ -1,4 +1,3 @@
-
 import { getSupabase } from './supabase';
 import type { Session, User } from '@supabase/supabase-js';
 import type { Database } from './database.types';
@@ -26,7 +25,7 @@ export const authService = {
     const { data: authData, error: authError } = await getSupabase().auth.signUp({ 
       email, 
       password,
-      options: {
+      options: { 
         data: {
           name: profileData.name,
           role: profileData.role
